@@ -5,7 +5,7 @@ DATABASE_URL = "sqlite:///./project_tracking.db"
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}  # needed for SQLite
+    connect_args={"check_same_thread": False}  # required for SQLite
 )
 
 SessionLocal = sessionmaker(
@@ -15,3 +15,12 @@ SessionLocal = sessionmaker(
 )
 
 Base = declarative_base()
+
+
+# ✅ FastAPI Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
