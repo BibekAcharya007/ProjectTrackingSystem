@@ -29,7 +29,6 @@ class EmployeeCreate(BaseModel):
     availability: str
     project_id: int
 
-
 class EmployeeResponse(EmployeeCreate):
     emp_id: int
 
