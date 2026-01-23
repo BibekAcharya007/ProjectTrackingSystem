@@ -1,20 +1,22 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 
 from .. import schemas, models
 from ..database import get_db
+from .auth import manager_only
 
 router = APIRouter(prefix="/managers", tags=["Managers"])
-
-
 @router.get("/", response_model=List[schemas.ManagerResponse], status_code=status.HTTP_200_OK)
-def get_managers(db: Session = Depends(get_db)):
+def get_managers(db: Session = Depends(get_db), user=Depends(manager_only)):
     return db.query(models.Manager).all()
-
 
 @router.post("/", response_model=schemas.ManagerResponse, status_code=status.HTTP_201_CREATED)
 def create_manager(manager: schemas.ManagerCreate, db: Session = Depends(get_db)):
+    existing = db.query(models.Manager).filter(models.Manager.email == manager.email).first()
+    if existing:
+        raise HTTPException(status_code=409, detail="Manager with this email already exists")
+
     new_manager = models.Manager(**manager.dict())
     db.add(new_manager)
     db.commit()
@@ -22,20 +24,15 @@ def create_manager(manager: schemas.ManagerCreate, db: Session = Depends(get_db)
     return new_manager
 
 
-@router.get("/{manager_id}", response_model=schemas.ManagerResponse, status_code=status.HTTP_200_OK)
-def get_manager(manager_id: int, db: Session = Depends(get_db)):
-    return db.query(models.Manager).filter(models.Manager.manager_id == manager_id).first()
+@router.get("/dashboard", response_model=schemas.ManagerDashboard)
+def manager_dashboard(db: Session = Depends(get_db)):
+    total_projects = db.query(models.Project).count()
+    total_employees = db.query(models.Employee).count()
+    assigned = db.query(models.Employee).filter(models.Employee.project_id != None).count()
 
-
-@router.put("/{manager_id}", response_model=schemas.ManagerResponse, status_code=status.HTTP_200_OK)
-def update_manager(manager_id: int, manager: schemas.ManagerCreate, db: Session = Depends(get_db)):
-    q = db.query(models.Manager).filter(models.Manager.manager_id == manager_id)
-    q.update(manager.dict(), synchronize_session=False)
-    db.commit()
-    return q.first()
-
-
-@router.delete("/{manager_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_manager(manager_id: int, db: Session = Depends(get_db)):
-    db.query(models.Manager).filter(models.Manager.manager_id == manager_id).delete(synchronize_session=False)
-    db.commit()
+    return {
+        "total_projects": total_projects,
+        "total_employees": total_employees,
+        "assigned_employees": assigned,
+        "unassigned_employees": total_employees - assigned
+    }

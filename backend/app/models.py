@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from .database import Base
 
-
-
 class Project(Base):
     __tablename__ = "projects"
 
@@ -13,18 +11,18 @@ class Project(Base):
     no_of_emp_req = Column(Integer)
     no_of_emp_onboard = Column(Integer)
 
-
 class Employee(Base):
     __tablename__ = "employees"
 
     emp_id = Column(Integer, primary_key=True, index=True)
     emp_name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True)
+    password = Column(String, nullable=False)   # NEW
+    role = Column(String, default="employee")   # employee / manager
     primary_skills = Column(String)
     secondary_skills = Column(String)
     availability = Column(String)
-    project_id = Column(Integer, ForeignKey("projects.project_id"))
-
+    project_id = Column(Integer, ForeignKey("projects.project_id"), nullable=True)
 
 class Manager(Base):
     __tablename__ = "managers"
@@ -33,3 +31,4 @@ class Manager(Base):
     name = Column(String, nullable=False)
     email = Column(String, unique=True)
     project_id = Column(Integer, ForeignKey("projects.project_id"))
+    
