@@ -1,0 +1,27 @@
+.project-info {
+  background-color: white;
+  padding: 15px;
+  width: 300px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.emp-table {
+  width: 650px;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.emp-table th, .emp-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.add-emp-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}

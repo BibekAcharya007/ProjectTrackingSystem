@@ -1,0 +1,54 @@
+/* Full page container */
+.employee-container {
+  min-height: 100vh;
+  background-color: #f5f6fa;
+  padding: 40px;
+}
+
+/* Page title */
+.employee-title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #1f2937;
+}
+
+/* Main project card */
+.project-card {
+  background-color: white;
+  padding: 25px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Project name */
+.project-name {
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+/* Basic info row */
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+/* Timeline section */
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Working info */
+.work-info {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #111827;
+}

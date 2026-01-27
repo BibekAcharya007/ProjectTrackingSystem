@@ -1,0 +1,86 @@
+.project-info {
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* TABLE */
+
+.emp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.emp-table th,
+.emp-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.emp-table th {
+  background-color: #e5e7eb;
+}
+
+/* ADD BUTTON */
+
+.add-emp-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MODAL */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  background-color: white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 10px;
+}
+
+.modal-box input,
+.modal-box select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-btn {
+  background-color: #16a34a;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancel-btn {
+  background-color: #dc2626;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+}

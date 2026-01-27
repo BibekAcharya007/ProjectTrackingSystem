@@ -1,0 +1,14 @@
+.project-list {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 300px;
+}
