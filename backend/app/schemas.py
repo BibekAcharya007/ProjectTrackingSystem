@@ -1,15 +1,16 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
-# example
+from datetime import date
 
 
-
-# -------- Project --------
+# ---------- PROJECT ----------
 class ProjectCreate(BaseModel):
     project_name: str
     client_name: str
     skill_req: Optional[str] = None
     no_of_emp_req: int
+    start_date: Optional[date] = None     
+    end_date: Optional[date] = None       
 
 
 class ProjectResponse(ProjectCreate):
@@ -20,27 +21,27 @@ class ProjectResponse(ProjectCreate):
         from_attributes = True
 
 
-# -------- Employee --------
+# ---------- EMPLOYEE ----------
 class EmployeeCreate(BaseModel):
     emp_name: str
     email: EmailStr
-    primary_skills: str
-    secondary_skills: Optional[str] = None
-    availability: str
-    project_id: int
+    password: str
+    skill: str                         
+    availability: str = "Available"
+
 
 class EmployeeResponse(EmployeeCreate):
     emp_id: int
+    project_id: Optional[int] = None
 
     class Config:
         from_attributes = True
 
 
-# -------- Manager --------
+# ---------- MANAGER ----------
 class ManagerCreate(BaseModel):
     name: str
     email: EmailStr
-    project_id: int
 
 
 class ManagerResponse(ManagerCreate):
@@ -48,3 +49,47 @@ class ManagerResponse(ManagerCreate):
 
     class Config:
         from_attributes = True
+
+
+# ---------- AUTH ----------
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    role: str
+
+
+# ---------- ASSIGNMENT ----------
+class AssignEmployee(BaseModel):
+    emp_id: int
+    project_id: int
+
+
+class RemoveEmployee(BaseModel):
+    emp_id: int
+
+
+# ---------- DASHBOARD ----------
+class ManagerDashboard(BaseModel):
+    total_projects: int
+    total_employees: int
+    assigned_employees: int
+    unassigned_employees: int
+
+
+class ProjectDashboard(BaseModel):
+    project_id: int
+    project_name: str
+    total_required: int
+    total_assigned: int
+
+
+# ---------- EMPLOYEE SELF VIEW ----------
+class EmployeeProjectView(BaseModel):
+    project_name: str
+    client_name: str
+    skill_req: Optional[str]
