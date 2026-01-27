@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional, List
+from typing import Optional
+from datetime import date
 
 
 # ---------- PROJECT ----------
@@ -8,6 +9,8 @@ class ProjectCreate(BaseModel):
     client_name: str
     skill_req: Optional[str] = None
     no_of_emp_req: int
+    start_date: Optional[date] = None     
+    end_date: Optional[date] = None       
 
 
 class ProjectResponse(ProjectCreate):
@@ -22,9 +25,8 @@ class ProjectResponse(ProjectCreate):
 class EmployeeCreate(BaseModel):
     emp_name: str
     email: EmailStr
-    password: str   # ✅ add this
-    primary_skills: str
-    secondary_skills: Optional[str] = None
+    password: str
+    skill: str                         
     availability: str = "Available"
 
 
@@ -50,12 +52,6 @@ class ManagerResponse(ManagerCreate):
 
 
 # ---------- AUTH ----------
-class RegisterUser(BaseModel):
-    email: EmailStr
-    password: str
-    role: str  # "manager" or "employee"
-
-
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str

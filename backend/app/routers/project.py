@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from .. import schemas, models
 from ..database import get_db
+from .auth import manager_only
 
 router = APIRouter(prefix="/projects", tags=["Projects"])
 
@@ -13,12 +14,17 @@ def get_projects(db: Session = Depends(get_db)):
 
 
 @router.post("/", response_model=schemas.ProjectResponse, status_code=status.HTTP_201_CREATED)
-def create_project(project: schemas.ProjectCreate, db: Session = Depends(get_db)):
+def create_project(
+    project: schemas.ProjectCreate,
+    db: Session = Depends(get_db),
+    manager=Depends(manager_only)
+):
     new_project = models.Project(**project.dict(), no_of_emp_onboard=0)
     db.add(new_project)
     db.commit()
     db.refresh(new_project)
     return new_project
+
 
 
 @router.put("/{project_id}", response_model=schemas.ProjectResponse)
