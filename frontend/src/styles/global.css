@@ -1,0 +1,62 @@
+:root {
+  /* Color Palette */
+  --primary-teal: #008080;
+  --dark-teal: #006666;
+  --light-teal: #e6f2f2;
+  --white: #ffffff;
+  --text-dark: #2d3436;
+  --bg-gray: #f3f6fb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif; /* More professional font stack */
+  background-color: var(--bg-gray);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--primary-teal);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--dark-teal);
+}
+
+/* Professional Button Style */
+button {
+  font-family: inherit;
+  font-weight: 600;
+  background-color: var(--primary-teal);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+button:hover {
+  background-color: var(--dark-teal);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Card/Container Utility */
+.card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--primary-teal);
+}

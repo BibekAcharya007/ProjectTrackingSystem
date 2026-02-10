@@ -1,0 +1,64 @@
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #042f2e; /* deep teal */
+  padding: 20px 10px;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #f0fdfa; /* light teal-white */
+}
+
+.sidebar-manager-info {
+  padding: 15px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid rgba(94, 234, 212, 0.25);
+}
+
+.sidebar-manager-info p {
+  margin: 5px 0;
+}
+
+.small-email {
+  font-size: 12px;
+  opacity: 0.8;
+  color: #ccfbf1;
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.sidebar-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+  border: 1px solid rgba(94, 234, 212, 0.18);
+}
+
+.sidebar-btn:hover {
+  background: linear-gradient(90deg, #0d9488, #14b8a6);
+  transform: translateX(5px);
+  box-shadow: 0px 6px 18px rgba(20, 184, 166, 0.35);
+}

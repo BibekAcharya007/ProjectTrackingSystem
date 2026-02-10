@@ -1,0 +1,226 @@
+/* ===========================
+   DASHBOARD LAYOUT
+=========================== */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f2fbfb;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===========================
+   MAIN CONTENT
+=========================== */
+.dashboard-main {
+  flex: 1;
+  margin-left: 240px;
+  padding: 18px 22px;
+  width: calc(100% - 240px);
+  background: linear-gradient(135deg, #f4fffd, #ffffff);
+}
+
+/* ===========================
+   CONTENT BOX
+=========================== */
+.content-box {
+  background: #ffffff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid rgba(0, 128, 128, 0.12);
+  box-shadow: 0px 6px 16px rgba(0, 128, 128, 0.06);
+  transition: all 0.2s ease;
+}
+
+.content-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 10px 22px rgba(0, 128, 128, 0.12);
+}
+
+/* ===========================
+   SECTION TITLE
+=========================== */
+.section-title {
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #004d4d;
+}
+
+/* ===========================
+   GRID ROW (FILTERS)
+=========================== */
+.flex-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+/* ===========================
+   DASHBOARD CARDS
+=========================== */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* ===========================
+   CARD STYLE
+=========================== */
+.card {
+  background: #ffffff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 128, 128, 0.14);
+  box-shadow: 0px 6px 14px rgba(0, 128, 128, 0.06);
+  transition: all 0.2s ease;
+  min-height: 90px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 12px 22px rgba(0, 128, 128, 0.14);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #006666;
+}
+
+.card p {
+  margin-top: 8px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #003333;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+.btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #008080, #00b3b3);
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0px 6px 12px rgba(0, 128, 128, 0.22);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #006666, #009999);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* SECONDARY BTN */
+.btn-secondary {
+  background: #444;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: #222;
+}
+
+/* DANGER BTN */
+.btn-danger {
+  background: #d93025;
+  box-shadow: 0px 6px 14px rgba(217, 48, 37, 0.25);
+}
+
+.btn-danger:hover {
+  background: #b3251d;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+.input {
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 128, 128, 0.28);
+  border-radius: 10px;
+  width: 100%;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.input:focus {
+  border-color: #00aaaa;
+  box-shadow: 0px 0px 8px rgba(0, 170, 170, 0.25);
+}
+
+/* LABEL */
+.label {
+  font-weight: 800;
+  margin-bottom: 6px;
+  display: block;
+  color: #004d4d;
+}
+
+/* ===========================
+   TABLE
+=========================== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 128, 128, 0.14);
+  text-align: left;
+  font-size: 14px;
+}
+
+.table th {
+  background: rgba(0, 128, 128, 0.12);
+  color: #004d4d;
+  font-weight: 900;
+}
+
+.table tr:hover {
+  background: rgba(0, 179, 179, 0.06);
+}
+
+/* ===========================
+   SMALL TEXT
+=========================== */
+.small-text {
+  color: #666;
+  font-size: 13px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .dashboard-main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .flex-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}
